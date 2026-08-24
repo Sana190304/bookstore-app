@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import api from "../api/axios";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
+import BookCard from "../components/BookCard";
 
 const categoryStyle = {
   Fiction: "bg-amber-100 text-amber-800",
@@ -13,6 +14,7 @@ const categoryStyle = {
 export default function BookDetails() {
   const { id } = useParams();
   const [book, setBook] = useState(null);
+  const [related, setRelated] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
@@ -20,8 +22,16 @@ export default function BookDetails() {
   const { user } = useAuth();
 
   useEffect(() => {
+    setQuantity(1);
     api.get(`/books/${id}`).then(({ data }) => setBook(data));
   }, [id]);
+
+  useEffect(() => {
+    if (!book) return;
+    api.get("/books", { params: { category: book.category } }).then(({ data }) => {
+      setRelated(data.filter((b) => b._id !== id).slice(0, 4));
+    });
+  }, [book, id]);
 
   useEffect(() => {
     if (!user) return;
@@ -49,9 +59,18 @@ export default function BookDetails() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
-      <Link to="/" className="text-amber-700 text-sm hover:underline inline-block mb-6">
-        ← Back to Books
-      </Link>
+      {/* breadcrumb */}
+      <div className="text-sm text-gray-500 mb-6 flex items-center gap-1.5 flex-wrap">
+        <Link to="/" className="hover:text-amber-700 hover:underline">
+          Books
+        </Link>
+        <span>›</span>
+        <Link to="/" className="hover:text-amber-700 hover:underline">
+          {book.category}
+        </Link>
+        <span>›</span>
+        <span className="text-gray-700 line-clamp-1">{book.title}</span>
+      </div>
 
       <div className="bg-white border border-amber-100 rounded-2xl shadow-xl shadow-amber-900/5 ring-1 ring-black/5 p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="h-80 sm:h-96 bg-gradient-to-br from-amber-50 via-stone-50 to-amber-100 rounded-xl shadow-inner flex items-center justify-center text-7xl overflow-hidden">
@@ -86,8 +105,6 @@ export default function BookDetails() {
             </p>
           )}
 
-          <p className="text-gray-600 mt-4 leading-relaxed">{book.description}</p>
-
           <div className="mt-6 flex items-baseline gap-3">
             <span className="text-3xl font-bold text-amber-700">₹{book.price}</span>
             <span
@@ -96,8 +113,9 @@ export default function BookDetails() {
               {book.stock > 0 ? `${book.stock} in stock` : "Out of stock"}
             </span>
           </div>
+          <p className="text-xs text-gray-400 mt-0.5">Inclusive of all taxes</p>
 
-          <div className="flex flex-wrap items-center gap-3 mt-6">
+          <div className="flex flex-wrap items-center gap-3 mt-5">
             <div className="flex items-center border rounded-full overflow-hidden">
               <button
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -136,8 +154,29 @@ export default function BookDetails() {
               </button>
             )}
           </div>
+
+          <div className="flex items-start gap-2 mt-5 text-sm text-gray-500 bg-amber-50/60 rounded-lg px-3 py-2">
+            <span>📦</span>
+            <span>Free delivery in 3–5 business days. Easy 10-day replacement.</span>
+          </div>
+
+          <div className="border-t mt-6 pt-5">
+            <h2 className="font-semibold text-gray-800 mb-2">About this book</h2>
+            <p className="text-gray-600 leading-relaxed">{book.description}</p>
+          </div>
         </div>
       </div>
+
+      {related.length > 0 && (
+        <div className="mt-12">
+          <h2 className="font-display text-2xl mb-5">You might also like</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {related.map((b) => (
+              <BookCard key={b._id} book={b} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
