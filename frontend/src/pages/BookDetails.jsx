@@ -97,7 +97,7 @@ export default function BookDetails() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 mt-6">
+          <div className="flex flex-wrap items-center gap-3 mt-6">
             <div className="flex items-center border rounded-full overflow-hidden">
               <button
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -117,7 +117,7 @@ export default function BookDetails() {
             <button
               onClick={handleAddToCart}
               disabled={book.stock === 0}
-              className="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-5 py-2 rounded-full hover:shadow-lg hover:scale-105 active:scale-95 transition-transform disabled:from-gray-300 disabled:to-gray-300 disabled:hover:scale-100"
+              className="flex-1 sm:flex-none whitespace-nowrap bg-gradient-to-r from-amber-500 to-amber-600 text-white px-5 py-2 rounded-full hover:shadow-lg hover:scale-105 active:scale-95 transition-transform disabled:from-gray-300 disabled:to-gray-300 disabled:hover:scale-100"
             >
               {added ? "Added!" : "Add to cart"}
             </button>
