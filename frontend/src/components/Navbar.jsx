@@ -19,24 +19,25 @@ export default function Navbar() {
 
   return (
     <nav className="bg-gradient-to-br from-amber-50 via-stone-50 to-amber-50 animate-gradient sticky top-0 z-10 shadow-sm border-b border-amber-200">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
-        <Link to="/" className="font-display text-2xl text-stone-900 flex items-center gap-2">
-          <span className="animate-float inline-block">📚</span> BookNest
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
+        <Link to="/" className="font-display text-lg sm:text-2xl text-stone-900 flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <span className="animate-float inline-block">📚</span>
+          <span className="hidden xs:inline sm:inline">BookNest</span>
         </Link>
 
-        <div className="flex items-center gap-6 text-sm font-medium">
+        <div className="flex items-center gap-2 sm:gap-6 text-sm font-medium overflow-x-auto">
           <Link to="/" className={navLink}>
-            📖 Books
+            📖 <span className="hidden sm:inline">Books</span>
           </Link>
 
           {user && (
             <Link to="/wishlist" className={navLink}>
-              ❤️ Wishlist
+              ❤️ <span className="hidden sm:inline">Wishlist</span>
             </Link>
           )}
 
           <Link to="/cart" className={`relative ${navLink}`}>
-            🛒 Cart
+            🛒 <span className="hidden sm:inline">Cart</span>
             {itemCount > 0 && (
               <span className="absolute -top-2.5 -right-3 bg-amber-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-md shadow-amber-400/50 animate-pulse">
                 {itemCount}
@@ -46,24 +47,24 @@ export default function Navbar() {
 
           {user && (
             <Link to="/orders" className={navLink}>
-              📦 Orders
+              📦 <span className="hidden sm:inline">Orders</span>
             </Link>
           )}
 
           {user?.role === "admin" && (
             <Link to="/admin" className={navLink}>
-              ⚙️ Admin
+              ⚙️ <span className="hidden sm:inline">Admin</span>
             </Link>
           )}
 
-          <div className="h-6 w-px bg-stone-300" />
+          <div className="h-6 w-px bg-stone-300 hidden sm:block" />
 
           {user ? (
-            <div className="flex items-center gap-3">
-              <span className="text-stone-500 hidden sm:inline">Hi, {user.name.split(" ")[0]}</span>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-stone-500 hidden md:inline">Hi, {user.name.split(" ")[0]}</span>
               <button
                 onClick={handleLogout}
-                className="bg-white border border-stone-300 px-4 py-1.5 rounded-full hover:bg-stone-100 transition-colors"
+                className="bg-white border border-stone-300 px-3 sm:px-4 py-1.5 rounded-full hover:bg-stone-100 transition-colors whitespace-nowrap"
               >
                 Logout
               </button>
@@ -71,7 +72,7 @@ export default function Navbar() {
           ) : (
             <Link
               to="/login"
-              className="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-5 py-1.5 rounded-full font-semibold shadow-lg shadow-amber-900/20 hover:shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all"
+              className="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 sm:px-5 py-1.5 rounded-full font-semibold shadow-lg shadow-amber-900/20 hover:shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
             >
               Login
             </Link>
