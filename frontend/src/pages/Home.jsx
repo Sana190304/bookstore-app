@@ -75,23 +75,23 @@ export default function Home() {
       </div>
 
       <div id="books" className="max-w-6xl mx-auto px-4 py-8 scroll-mt-4">
-        <div className="flex flex-col sm:flex-row gap-3 mb-8 -mt-2 relative z-0">
-          <div className="relative flex-1">
-            <span className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+        <div className="flex flex-row gap-2 sm:gap-3 mb-8 -mt-2 relative z-0">
+          <div className="relative flex-1 min-w-0">
+            <span className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
             <input
               type="text"
               placeholder="Search by title..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="bg-white text-gray-700 border-0 shadow-lg rounded-full pl-12 pr-5 py-3 w-full focus:ring-2 focus:ring-amber-400 outline-none"
+              className="bg-white text-gray-700 border-0 shadow-lg rounded-full pl-9 sm:pl-12 pr-3 sm:pr-5 py-2.5 sm:py-3 w-full focus:ring-2 focus:ring-amber-400 outline-none"
             />
           </div>
-          <div className="relative">
-            <span className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400">🏷️</span>
+          <div className="relative shrink-0">
+            <span className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 text-gray-400">🏷️</span>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="bg-white text-gray-700 border-0 shadow-lg rounded-full pl-11 pr-10 py-3 focus:ring-2 focus:ring-amber-400 outline-none appearance-none cursor-pointer"
+              className="bg-white text-gray-700 border-0 shadow-lg rounded-full pl-8 sm:pl-11 pr-6 sm:pr-10 py-2.5 sm:py-3 focus:ring-2 focus:ring-amber-400 outline-none appearance-none cursor-pointer w-24 sm:w-auto"
             >
               {CATEGORIES.map((c) => (
                 <option key={c} value={c}>
@@ -99,7 +99,7 @@ export default function Home() {
                 </option>
               ))}
             </select>
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+            <span className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
               ▾
             </span>
           </div>
