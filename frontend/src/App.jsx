@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import MobileTabBar from "./components/MobileTabBar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import BookDetails from "./pages/BookDetails";
@@ -13,7 +14,7 @@ import Admin from "./pages/Admin";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-stone-50 to-amber-50/40">
+    <div className="min-h-screen bg-gradient-to-b from-stone-50 to-amber-50/40 pb-16 sm:pb-0">
       <Navbar />
 
       <Routes>
@@ -56,6 +57,8 @@ function App() {
           }
         />
       </Routes>
+
+      <MobileTabBar />
     </div>
   );
 }
