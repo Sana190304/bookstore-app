@@ -11,7 +11,7 @@ export default function BookCard({ book }) {
   const { addToCart } = useCart();
 
   return (
-    <div className="border rounded-xl p-4 flex flex-col bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
+    <div className="border border-amber-100 rounded-xl p-4 flex flex-col bg-white shadow-sm hover:shadow-xl hover:border-amber-200 hover:-translate-y-1 transition-all duration-200">
       <Link to={`/books/${book._id}`} className="flex-1">
         <div className="h-40 bg-gradient-to-br from-amber-50 via-stone-50 to-amber-100 rounded-lg mb-3 flex items-center justify-center text-5xl overflow-hidden">
           {book.coverImage ? (
