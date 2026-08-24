@@ -82,14 +82,6 @@ export default function Navbar() {
 
         {/* mobile — just the essentials, everything else lives in the bottom tab bar */}
         <div className="flex sm:hidden items-center gap-2">
-          <Link to="/cart" className="relative text-xl px-1">
-            🛒
-            {itemCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-amber-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-                {itemCount}
-              </span>
-            )}
-          </Link>
           {user && (
             <button
               onClick={handleLogout}
