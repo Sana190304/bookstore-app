@@ -32,7 +32,7 @@ export default function BookCard({ book }) {
           {book.category}
         </span>
         <h3 className="font-semibold text-gray-800 line-clamp-1">{book.title}</h3>
-        <p className="text-sm text-gray-500">{book.author}</p>
+        <p className="text-sm text-gray-500 line-clamp-1">{book.author}</p>
         {book.rating > 0 && (
           <p className="text-xs text-amber-500 mt-1">
             {"★".repeat(Math.round(book.rating))}
