@@ -90,20 +90,13 @@ export default function Navbar() {
               </span>
             )}
           </Link>
-          {user ? (
+          {user && (
             <button
               onClick={handleLogout}
               className="bg-white border border-stone-300 px-3 py-1.5 rounded-full text-sm hover:bg-stone-100 transition-colors"
             >
               Logout
             </button>
-          ) : (
-            <Link
-              to="/login"
-              className="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap"
-            >
-              Login
-            </Link>
           )}
         </div>
       </div>
