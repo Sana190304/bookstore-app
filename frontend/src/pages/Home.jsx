@@ -75,7 +75,7 @@ export default function Home() {
       </div>
 
       <div id="books" className="max-w-6xl mx-auto px-4 py-8 scroll-mt-4">
-        <div className="flex flex-col sm:flex-row gap-3 mb-8 -mt-2 relative z-10">
+        <div className="flex flex-col sm:flex-row gap-3 mb-8 -mt-2 relative z-0">
           <div className="relative flex-1">
             <span className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
             <input

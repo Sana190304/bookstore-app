@@ -18,7 +18,7 @@ export default function Navbar() {
     "relative py-1 text-stone-700 hover:text-amber-700 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-amber-600 after:transition-all hover:after:w-full";
 
   return (
-    <nav className="bg-gradient-to-br from-amber-50 via-stone-50 to-amber-50 animate-gradient sticky top-0 z-10 shadow-sm border-b border-amber-200">
+    <nav className="bg-gradient-to-br from-amber-50 via-stone-50 to-amber-50 animate-gradient sticky top-0 z-30 shadow-sm border-b border-amber-200">
       <div className="max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
         <Link to="/" className="font-display text-lg sm:text-2xl text-stone-900 flex items-center gap-1.5 sm:gap-2 shrink-0">
           <span className="animate-float inline-block">📚</span>
