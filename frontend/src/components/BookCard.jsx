@@ -42,14 +42,14 @@ export default function BookCard({ book }) {
         )}
       </Link>
 
-      <div className="flex flex-col gap-2 mt-3">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-3">
         <span className="font-bold text-lg bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent">
           ₹{book.price}
         </span>
         <button
           onClick={() => addToCart(book)}
           disabled={book.stock === 0}
-          className="w-full text-sm bg-gradient-to-r from-amber-500 to-amber-600 text-white px-3 py-1.5 rounded-full hover:shadow-md hover:scale-105 active:scale-95 transition-transform disabled:from-gray-300 disabled:to-gray-300 disabled:hover:scale-100"
+          className="w-full sm:w-auto text-sm bg-gradient-to-r from-amber-500 to-amber-600 text-white px-3 py-1.5 rounded-full hover:shadow-md hover:scale-105 active:scale-95 transition-transform disabled:from-gray-300 disabled:to-gray-300 disabled:hover:scale-100"
         >
           {book.stock === 0 ? "Out of stock" : "Add to cart"}
         </button>
